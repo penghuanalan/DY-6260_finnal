@@ -1,0 +1,223 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="38dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_select_sample_title"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/choose_img"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_select_sample"
+            android:layout_width="890dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="38dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="样品名称"
+                android:textSize="20sp" />
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/detection_box_01"
+                android:gravity="center_vertical" >
+
+                <EditText
+                    android:id="@+id/et_sample_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:text="检测项目"
+                android:textSize="20sp" />
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/detection_box_01"
+                android:gravity="center_vertical" >
+
+                <EditText
+                    android:id="@+id/et_project_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_check"
+                android:layout_width="123dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/query"
+                android:onClick="doClick"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="890dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/sample_block"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="72dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="编号"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="样品名称"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="检测项目"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="196dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="标准名称"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="标准值"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="判定符号"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="86dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="单位"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <RelativeLayout
+                android:layout_width="58dp"
+                android:layout_height="match_parent" >
+
+                <CheckBox
+                    android:id="@+id/cb_check_all"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="14dp"
+                    android:clickable="true"
+                    android:onClick="doClick" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="890dp"
+            android:layout_height="313dp"
+            android:layout_marginLeft="35dp" >
+        </ListView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="7dp" >
+
+            <Button
+                android:id="@+id/btn_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="236dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/xiazai"
+                android:onClick="doClick" />
+
+            <Button
+                android:id="@+id/btn_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="376dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/the_new"
+                android:onClick="doClick" />
+
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="516dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/the_editor"
+                android:onClick="doClick" />
+
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="654dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/delete"
+                android:onClick="doClick" />
+
+            <Button
+                android:id="@+id/btn_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="794dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/back"
+                android:onClick="doClick" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

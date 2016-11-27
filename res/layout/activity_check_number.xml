@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/choujian_danhao">
+     <TextView 
+       android:id="@+id/tv_counter"
+       android:layout_width="190dp"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="814dp"
+       android:background="@null"
+       android:text="00:00:01"
+       android:textSize="20dp"/>
+    <Button 
+        android:id="@+id/btn_left"
+        android:layout_width="40dp"
+        android:layout_height="80dp"
+        android:onClick="doClick"
+        android:background="@drawable/selector_left"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+    <Button 
+        android:id="@+id/btn_right"
+        android:layout_width="40dp"
+        android:layout_height="80dp"
+        android:onClick="doClick"
+        android:background="@drawable/selector_right"
+       android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/horizontalScrollView"/>
+   
+<HorizontalScrollView 
+    android:id="@+id/horizontalScrollView"
+    android:layout_width="944dp"
+    android:layout_height="385dp"
+    android:layout_toRightOf="@+id/btn_left"
+    android:layout_marginTop="76dp"
+    >
+    <LinearLayout  
+                        android:layout_width="wrap_content"  
+                        android:layout_height="fill_parent"  
+                        android:orientation="vertical" > 
+     <LinearLayout 
+        android:layout_width="867dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="38dp"
+        android:background="@drawable/blue_block"
+        android:orientation="horizontal"
+        >
+        <TextView 
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text="序号"
+            android:textColor="#ffffff"
+            />
+        <TextView 
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+             android:textSize="20sp"
+             android:gravity="center"
+             android:textColor="#ffffff"
+            android:text="抽检单号"/>
+        <TextView 
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+             android:textSize="20sp"
+             android:gravity="center"
+             android:textColor="#ffffff"
+            android:text="检测单位"/>
+        <TextView 
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+             android:textSize="20sp"
+             android:gravity="center"
+             android:textColor="#ffffff"
+            android:text="样品名称"/>
+        <TextView 
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+             android:textSize="20sp"
+            android:gravity="center"
+             android:textColor="#ffffff"
+            android:text="检测项目"/>
+        <TextView 
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+             android:textSize="20sp"
+             android:gravity="center"
+             android:textColor="#ffffff"
+            android:text="编制日期"/>
+        <RelativeLayout
+            android:layout_width="123dp"
+            android:layout_height="match_parent" >
+            <TextView
+                android:id="@+id/tv_check" 
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+             android:textSize="20sp"
+             android:paddingTop="6dp"
+            android:paddingLeft="27dp"
+             android:textColor="#ffffff"
+            android:text="全选"/>
+        <CheckBox 
+            android:id="@+id/cb_check_all"
+           android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:clickable="true" 
+            android:onClick="doClick"
+            android:layout_toRightOf="@+id/tv_check"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"/>
+        </RelativeLayout>
+        
+    </LinearLayout>
+    <ListView  
+             android:id="@+id/list"  
+             android:layout_width="867dp"  
+             android:layout_height="wrap_content" 
+             android:layout_marginLeft="38dp"
+              >  
+     </ListView> 
+     </LinearLayout>   
+</HorizontalScrollView>
+<RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/horizontalScrollView"
+    android:layout_alignParentBottom="true"
+    >
+    <TextView 
+        android:id="@+id/tv_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="83dp"
+        android:background="@drawable/pages"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="#019df0"
+       android:layout_marginTop="14dp"
+        android:layout_alignParentTop="true"
+        android:textSize="20sp"/>
+    <!--  
+        <Button
+             android:id="@+id/btn_new"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="236dp"
+              android:layout_marginTop="14dp"
+              android:onClick="doClick"
+             android:background="@drawable/the_new" />
+             <Button
+             android:id="@+id/btn_print"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="516dp"
+              android:layout_marginTop="14dp"
+              android:onClick="doClick"
+             android:background="@drawable/print" />
+             -->
+        <Button
+             android:id="@+id/btn_download"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="516dp"
+              android:layout_marginTop="14dp"
+             android:onClick="doClick"
+             android:background="@drawable/xiazai" />
+        
+         <Button
+             android:id="@+id/btn_delete"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="654dp"
+              android:layout_marginTop="14dp"
+             android:onClick="doClick"
+             android:background="@drawable/delete" />
+              
+        
+         <Button 
+             android:id="@+id/btn_return"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="794dp"
+             android:layout_marginRight="40dp"
+              android:layout_marginTop="14dp"
+             android:onClick="doClick"
+             android:background="@drawable/back"
+             />
+</RelativeLayout>
+</RelativeLayout>
+

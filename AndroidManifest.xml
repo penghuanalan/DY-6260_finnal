@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dayuan.dy_6260chartscanner"
+    android:versionCode="1"
+    android:versionName="1.0.3" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.hardware.usb.host" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SET_TIME_ZONE" />
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="true" />
+
+    <application
+        android:name=".TApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/bitbug_favicon"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+        <activity
+            android:launchMode="singleTask"
+            android:name=".activity.LoginActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+             <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" /> 
+        </activity>
+        <activity
+            android:name=".activity.BaseActivity"
+            android:label="@string/title_activity_main_menu" >
+        </activity>
+        <activity
+            android:name=".activity.SampleTestActivity"
+            android:label="@string/title_activity_sample_test" >
+        </activity>
+        <activity
+            android:name=".activity.DetectionChannelOneActvity"
+            android:label="@string/title_activity_detection_channel_one"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+           
+        </activity>
+        <activity
+            android:name=".activity.DetectionChannelTwoActvity"
+            android:label="@string/title_activity_detection_channel_two"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+        </activity>
+        <activity
+            android:name=".activity.DetectionChannelActvity"
+            android:label="@string/title_activity_detection_channel"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+        </activity>
+        <activity
+            android:name=".activity.DetectionCompletedOneActivity"
+            android:label="@string/title_activity_detection_completed_one" >
+        </activity>
+        <activity
+            android:name=".activity.DetectionCompletedTwoActivity"
+            android:label="@string/title_activity_detection_completed_two" >
+        </activity>
+        <activity
+            android:name=".activity.DetectionCompletedActivity"
+            android:label="@string/title_activity_detection_completed" >
+        </activity>
+        <activity
+            android:name=".activity.QueryLogActivity"
+            android:label="@string/title_activity_query_log" >
+        </activity>
+        <activity
+            android:name=".activity.ProjectSettingActivity"
+            android:label="@string/title_activity_project_setting" >
+        </activity>
+        <activity
+            android:name=".activity.NewActivity"
+            android:label="@string/title_activity_new"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            >
+        </activity>
+        <activity
+            android:name=".activity.EditActvity"
+            android:label="@string/title_activity_edit"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+           >
+        </activity>
+        <activity
+            android:name=".activity.DataActivity"
+            android:label="@string/title_activity_data" >
+        </activity>
+        <activity
+            android:name=".activity.DetectionReportActivity"
+            android:label="@string/title_activity_detection_report" >
+        </activity>
+        <activity
+            android:name=".activity.CheckNumberActivity"
+            android:label="@string/title_activity_check_number" >
+        </activity>
+        <activity
+            android:name=".activity.SystemSettingActivity"
+            android:label="@string/title_activity_system_setting" >
+        </activity>
+        <activity
+            android:name=".activity.NumberCreateActivity"
+            android:label="@string/title_activity_number_create" >
+        </activity>
+        <activity
+            android:name=".activity.CheckNumberItemActivity"
+            android:label="@string/title_activity_check_number_item" >
+        </activity>
+        <activity
+            android:name=".activity.DetectReportItemActivity"
+            android:label="@string/title_activity_detect_report_item" >
+        </activity>
+        <activity
+            android:name="com.dayuan.dy_6260chartscanner.activity.CheckStandardActivity"
+            android:label="@string/title_activity_check_standard"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            >
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     android:orientation="horizontal"
+     android:background="@drawable/form_box"
+     android:descendantFocusability="blocksDescendants"
+     >
+     
+    <TextView 
+            android:id="@+id/tv_id"
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="编号"
+            />
+        <TextView 
+            android:id="@+id/tv_sample_name"
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+             android:textSize="16sp"
+              android:gravity="center"
+            android:text="样品"/>
+        <TextView
+            android:id="@+id/tv_name" 
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+             android:textSize="16sp"
+              android:gravity="center"
+            android:text="检测项目"/>
+        <TextView
+            android:id="@+id/tv_density" 
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+             android:textSize="16sp"
+             android:gravity="center"
+            android:text="浓度"/>
+        <TextView
+            android:id="@+id/tv_result" 
+            android:layout_width="124dp"
+            android:layout_height="match_parent"
+             android:textSize="16sp"
+             android:gravity="center"
+             android:clickable="true"
+            android:text="结果"/>
+        <TextView 
+            android:id="@+id/tv_datetime"
+            android:layout_width="175dp"
+            android:layout_height="match_parent"
+             android:textSize="16sp"
+             android:gravity="center"
+            android:text="时间"/>
+        <RelativeLayout
+            android:layout_width="77dp"
+            android:layout_height="match_parent" >
+        <CheckBox 
+            android:id="@+id/cb_check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:clickable="true" 
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"       />
+           </RelativeLayout>
+           
+</LinearLayout>

@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shujuguanli"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/tv_counter"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="814dp"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:text="00:00:01"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btn_chou_jian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="178dp"
+        android:background="@drawable/sampling_number"
+        android:onClick="doClick" />
+
+    <Button
+        android:id="@+id/btn_test_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+         android:layout_marginLeft="80dp"
+        android:layout_toRightOf="@+id/btn_chou_jian"
+        android:background="@drawable/the_test_report"
+        android:onClick="doClick" />
+
+    <Button
+        android:id="@+id/btn_standard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="80dp"
+        android:layout_toRightOf="@+id/btn_test_report"
+        android:background="@drawable/the_test_sample"
+        android:onClick="doClick" 
+      />
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_test_report"
+        android:layout_marginLeft="794dp"
+        android:layout_marginTop="118dp"
+        android:background="@drawable/back"
+        android:onClick="doClick" />
+
+</RelativeLayout>

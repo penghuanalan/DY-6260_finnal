@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity"  >
+   <RelativeLayout 
+       android:layout_width="533dp"
+       android:layout_height="320dp"
+       android:layout_marginLeft="38dp"
+       android:layout_marginBottom="7dp"
+       android:background="@drawable/shengcheng_baogao"
+       >
+       <RelativeLayout 
+           android:id="@+id/rl_check_number"
+           android:layout_width="342dp"
+           android:layout_height="38dp"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="140dp"
+           android:background="@drawable/choujian_bianhao"
+           > 
+           <EditText
+           android:id="@+id/et_check_number"
+           android:layout_width="190dp"
+           android:layout_height="match_parent"
+           android:layout_marginLeft="120dp"
+           android:background="@null"
+           android:paddingLeft="14dp"
+           android:digits="1234567890-\n"
+           android:gravity="center_vertical"
+           android:textSize="18sp"
+           android:textColor="#424242"
+           />
+            <Button 
+           android:id="@+id/btn_down_arrow"
+           android:layout_width="38dp"
+           android:layout_height="match_parent"
+           android:layout_toRightOf="@+id/et_check_number"
+           android:layout_alignParentRight="true"
+           android:background="@drawable/down_arrow"/>
+       </RelativeLayout> 
+       
+       <Button 
+           android:id="@+id/btn_confirm"
+           android:layout_width="145dp"
+           android:layout_height="48dp"
+           android:layout_marginTop="78dp"
+           android:layout_marginLeft="174dp"
+          android:layout_below="@+id/rl_check_number"
+           android:background="@drawable/confirm_button"/>
+       <Button 
+           android:id="@+id/btn_back"
+           android:layout_width="145dp"
+           android:layout_height="48dp"
+            android:layout_below="@+id/rl_check_number"
+            android:layout_marginTop="78dp"
+            android:layout_marginLeft="283dp"
+           android:background="@drawable/back_button"/>
+   </RelativeLayout> 
+
+</RelativeLayout>

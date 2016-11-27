@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/ll_wifi"
+            android:layout_width="626dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="35dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_wlan_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="186dp"
+                android:gravity="center_vertical"
+                android:text="WLAN开关"
+                android:textSize="20sp" />
+
+            <Switch
+                android:id="@+id/sw_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/v_line_01"
+            android:layout_width="440dp"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/ll_wifi"
+            android:layout_marginLeft="186dp"
+            android:background="#c0c0c0" />
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="440dp"
+            android:layout_height="288dp"
+            android:layout_below="@+id/v_line_01"
+            android:layout_marginLeft="186dp" >
+        </ListView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout02"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/tv_wlan_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="360wifi-2B"
+            android:textColor="#3d3d3d"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_password"
+            android:layout_width="350dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="密码"
+                android:textColor="#707070"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:layout_width="302dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="14dp"
+                android:background="@drawable/communication_box"
+                android:gravity="center_vertical" >
+
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:password="true" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_show_password"
+            android:layout_width="350dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="26dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_show_password"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/selector_show_password" />
+
+            <TextView
+                android:id="@+id/tv_show_password"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="18dp"
+                android:gravity="center_vertical"
+                android:text="显示密码"
+                android:textColor="#707070"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_switch"
+            android:layout_width="350dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/lianjie_quxiao_anniu" >
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@null"
+                android:text="取消"
+                android:textColor="#333333"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_connect"
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/btn_cancel"
+                android:background="@null"
+                android:text="连接"
+                android:textColor="#707070"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_reset"
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/btn_cancel"
+                android:background="@null"
+                android:text="重置"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="562dp"
+        android:layout_marginTop="402dp"
+        android:background="@drawable/back"
+        android:onClick="doClick" />
+
+</RelativeLayout>

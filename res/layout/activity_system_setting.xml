@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/the_system_background"
+    tools:context="${relativePackage}.${activityClass}" >
+  <TextView 
+       android:id="@+id/tv_counter"
+       android:layout_width="190dp"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="814dp"
+       android:background="@null"
+       android:text="00:00:01"
+       android:textSize="20dp"/>
+    <LinearLayout 
+        android:id="@+id/linearLayout"
+        android:layout_width="232dp"
+        android:layout_height="474dp"
+        android:layout_marginTop="76dp"
+        android:orientation="vertical">
+        <Button 
+            android:id="@+id/btn_wifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_wifi"/>
+        <Button  
+            android:id="@+id/btn_cable_net"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginTop="35dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_cable"/>
+        <Button  
+            android:id="@+id/btn_bluetooth"
+            android:layout_width="wrap_content"
+           android:layout_height="42dp"
+            android:layout_marginTop="36dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_bluetooth"/>
+        <Button  
+            android:id="@+id/btn_cloud"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginTop="36dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_cloud"/>
+        <Button  
+            android:id="@+id/btn_time_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginTop="37dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_verify"/>
+        <Button 
+            android:id="@+id/btn_others_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginTop="36dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_others_setting"/>
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="792dp"
+        android:layout_height="474dp"
+        android:layout_marginTop="76dp"
+        android:layout_toRightOf="@+id/linearLayout">
+        
+    </FrameLayout>
+              
+        
+         
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 当前应用程序的主色调 -->
+    <color name="main_color">#FF6625</color>
+    
+    <!-- 通用颜色 -->
+    <color name="black_dark01">#000000</color>
+    <color name="black_dark">#333333</color>
+    <color name="black">#555555</color>
+    <color name="black_light">#595959</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#AAAAAA</color>
+    <color name="gray_dark">#999999</color>
+    <color name="gray_light">#CCCCCC</color>
+    <color name="blue_light">#d1f0ff</color>
+    <color name="blue">#a2e1ff</color>
+
+</resources>

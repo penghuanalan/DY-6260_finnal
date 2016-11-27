@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">胶体金读卡仪</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main_menu">BaseActivity</string>
+    <string name="title_activity_sample_test">SampleTestActivity</string>
+    <string name="title_activity_detection_channel_one">DetectionChannelOneActivity</string>
+    <string name="title_activity_detection_channel_two">DetectionChannelTwoActivity</string>
+    <string name="title_activity_detection_channel">DetectionChannelActivity</string>
+    <string name="title_activity_detection_completed_one">DetectionCompletedOneActivity</string>
+    <string name="title_activity_detection_completed_two">DetectionCompletedTwoActivity</string>
+    <string name="title_activity_detection_completed">DetectionCompletedActivity</string>
+    <string name="title_activity_query_log">QueryLogActivity</string>
+    <string name="title_activity_project_setting">ProjectSettingActivity</string>
+    <string name="title_activity_new">NewActivity</string>
+    <string name="title_activity_edit">EditActivity</string>
+    <string name="title_activity_data">DataActivity</string>
+    <string name="title_activity_detection_report">DetectionReportActivity</string>
+    <string name="title_activity_check_number">CheckNumberActivity</string>
+    <string name="title_activity_system_setting">SystemSettingActivity</string>
+    <string name="title_activity_number_create">NumberCreateActivity</string>
+    <string name="title_activity_check_number_item">CheckNumberItemActivity</string>
+    <string name="title_activity_detect_report_item">DetectReportItemActivity</string>
+    <string name="title_activity_check_standard">CheckStandardActivity</string>
+
+</resources>

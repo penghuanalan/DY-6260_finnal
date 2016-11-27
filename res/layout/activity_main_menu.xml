@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/the_main_menu"
+    tools:context="${relativePackage}.${activityClass}" >
+    
+   <TextView 
+       android:id="@+id/tv_Counter"
+       android:layout_width="190dp"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="814dp"
+       android:background="@null"
+       android:text="2015-12-01 00:00:01"
+       android:textSize="20dp"/>
+   
+    <Button 
+        android:id="@+id/btn_sample_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="125dp"
+        android:background="@null"
+        android:drawableTop="@drawable/the_sample_testing"
+        android:drawablePadding="20dp"
+        android:textSize="20sp"
+        android:text="样品检测"/>
+        
+     <Button 
+        android:id="@+id/btn_query_log"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/btn_sample_test"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="125dp"
+        android:background="@null"
+        android:drawableTop="@drawable/query_log"
+        android:drawablePadding="20dp"
+        android:textSize="20sp"
+        android:text="查询记录"/>>
+       
+    <Button
+        android:id="@+id/btn_project_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/btn_query_log"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="125dp"
+        android:background="@null"
+        android:drawableTop="@drawable/project_settings"
+        android:drawablePadding="20dp"
+        android:textSize="20sp"
+         android:text="项目设置"/>
+         
+     <Button 
+        android:id="@+id/btn_data_management"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_sample_test"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="40dp"
+        android:background="@null"
+        android:drawableTop="@drawable/data_management"
+        android:drawablePadding="20dp"
+        android:textSize="20sp"
+        android:text="数据管理"/>
+        
+    <Button
+        android:id="@+id/btn_system_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/btn_data_management"
+        android:layout_below="@+id/btn_query_log"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="40dp"
+        android:background="@null"
+        android:drawableTop="@drawable/system_settings"
+        android:drawablePadding="20dp"
+        android:textSize="20sp"
+        android:text="系统设置"/>
+         
+        
+    <Button 
+        android:id="@+id/btn_exit_system"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+         android:layout_toRightOf="@+id/btn_system_setting"
+        android:layout_below="@+id/btn_project_setting"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="40dp"
+        android:drawableTop="@drawable/log_out"
+        android:drawablePadding="20dp"
+        android:textSize="20sp"
+        android:text="退出系统"/>
+       
+    
+   
+</RelativeLayout>

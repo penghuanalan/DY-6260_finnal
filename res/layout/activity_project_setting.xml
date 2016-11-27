@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/background_of_project_settings">
+     <TextView 
+       android:id="@+id/tv_counter"
+       android:layout_width="190dp"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="814dp"
+       android:background="@null"
+       android:text="00:00:01"
+       android:textSize="20dp"/>
+    
+      <FrameLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+     
+   <android.support.v4.view.ViewPager
+	    android:id="@+id/viewPager"
+	    android:layout_width="match_parent"
+	    android:layout_height="360dp"
+	    android:layout_alignParentLeft="true"
+	    android:layout_marginTop="76dp"
+	    android:layout_above="@+id/ll_bottom_menu" >
+
+	</android.support.v4.view.ViewPager>
+	<LinearLayout 
+	    android:id="@+id/ll_radiogroup" 
+	    android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/viewPager"
+        android:orientation="horizontal">
+        
+	 <RadioGroup 
+        android:id="@+id/radioGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+             <!-- <RadioButton
+                  android:id="@+id/radio1"
+                  android:layout_width="12dp"
+                  android:layout_height="12dp"
+                  android:button="@null"
+                  android:layout_alignParentTop="true"
+                  android:background="@drawable/selector_01"
+                   android:onClick="checkRadioButton"
+                   />
+              <RadioButton
+                  android:id="@+id/radio2"
+                  android:layout_width="12dp"
+                  android:layout_height="12dp"
+                  android:button="@null"
+                   android:layout_marginLeft="12dp"
+                  android:layout_alignParentTop="true"
+                  android:background="@drawable/selector_01"
+                  android:visibility="gone"
+                   android:onClick="checkRadioButton"
+                   />
+              <RadioButton
+                  android:id="@+id/radio3"
+                  android:layout_width="12dp"
+                  android:layout_height="12dp"
+                  android:button="@null"
+                  android:layout_toRightOf="@+id/radioButton2"
+                  android:layout_marginLeft="12dp"
+                  android:layout_alignParentTop="true"
+                  android:background="@drawable/selector_01"
+                  android:visibility="gone"
+                   android:onClick="checkRadioButton"
+                   />
+                   -->
+          </RadioGroup>
+          </LinearLayout>
+<RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/ll_radiogroup"
+    >
+    
+   <Button
+             android:id="@+id/btn_new"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="215dp"
+             android:onClick="doClick"
+             android:layout_alignParentTop="true"
+             android:background="@drawable/the_new" />
+   <Button
+             android:id="@+id/btn_edit"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="354dp"
+             android:onClick="doClick"
+             android:layout_alignParentTop="true"
+             android:background="@drawable/the_editor" />
+   <Button
+             android:id="@+id/btn_delete"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="493dp"
+             android:onClick="doClick"
+             android:layout_alignParentTop="true"
+             android:background="@drawable/delete" />
+         <Button
+             android:id="@+id/btn_export"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="633dp"
+             android:onClick="doClick"
+             android:layout_alignParentTop="true"
+             android:background="@drawable/import_butt" />
+              
+        
+         <Button 
+             android:id="@+id/btn_return"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="793dp"
+             android:layout_marginRight="41dp"
+             android:onClick="doClick"
+              android:layout_alignParentTop="true"
+             android:background="@drawable/back"
+             />
+</RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,75 @@
+package com.dayuan.dy_6260chartscanner.adapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.dayuan.dy_6260chartscanner.R;
+import com.dayuan.dy_6260chartscanner.entity.Project;
+import com.dayuan.dy_6260chartscanner.entity.Sample;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+public class SampleAdapter extends BaseAdapter{
+
+	private Context context;
+	private List<Project> projects;
+	private LayoutInflater inflater;
+	
+	
+	public SampleAdapter(Context context, List<Project> projects) {
+		this.context = context;
+		
+		this.setProject(projects);
+		this.inflater=LayoutInflater.from(context);
+	}
+
+	public void setProject(List<Project> projects){
+		if(projects==null){
+			projects=new ArrayList<>();}
+		this.projects = projects;
+	}
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return projects.size();
+	}
+
+	@Override
+	public Project getItem(int position) {
+		// TODO Auto-generated method stub
+		return projects.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		ViewHolder holder=null;
+		if(convertView==null){
+			convertView=inflater.inflate(R.layout.sample_gv_item, null);
+			holder=new ViewHolder();
+			holder.tvName=(TextView) convertView.findViewById(R.id.tv_sample);
+			convertView.setTag(holder);
+		}else{
+			holder=(ViewHolder) convertView.getTag();
+		}
+		Project project=getItem(position);
+		
+		holder.tvName.setText(project.getName()+"("+((Integer.parseInt(project.getMethod()) < 2)?"定量":"定性") +")");
+		holder.tvName.setBackgroundResource(R.drawable.the_sample_button);
+		return convertView;
+	}
+
+	class ViewHolder{
+		TextView tvName;
+	}
+}
