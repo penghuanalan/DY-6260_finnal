@@ -103,13 +103,13 @@ public class VerifyFragment extends Fragment implements OnClickListener{
 			case MESSAGE_VERIFY_SUCCESS:
 				btnVerifyOne.setSelected(false);
 				btnVerifyTwo.setSelected(false);
-				Toast.makeText(getActivity(), "校准成功", 0).show();
+				//Toast.makeText(getActivity(), "校准成功", 0).show();
 				break;
 
 			case MESSAGE_VERIFY_FAILURE:
 				btnVerifyOne.setSelected(false);
 				btnVerifyTwo.setSelected(false);
-				Toast.makeText(getActivity(), "校准失败", 0).show();
+				//Toast.makeText(getActivity(), "校准失败", 0).show();
 				break;
 			case NO_CARD_STATUS:
 				Toast.makeText(getActivity(), "当前为无卡状态，请插入卡",

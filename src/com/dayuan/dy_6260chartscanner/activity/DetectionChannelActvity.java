@@ -75,10 +75,10 @@ public class DetectionChannelActvity extends BaseActivity implements
 	private Button btnPrint;
 	// 通道1
 	private EditText etInputSample, etMultiple;
-	private TextView tvNumber, tvDensity, tvResult,tvInputSample;
+	private TextView tvNumber, tvDensity, tvResult, tvInputSample;
 	// 通道2
 	private EditText etInputSampleTwo, etMultipleTwo;
-	private TextView tvNumberTwo, tvDensityTwo, tvResultTwo,tvInputSampleTwo;
+	private TextView tvNumberTwo, tvDensityTwo, tvResultTwo, tvInputSampleTwo;
 
 	private LinearLayout llChannelBar;
 	// 插入卡的gif
@@ -184,13 +184,13 @@ public class DetectionChannelActvity extends BaseActivity implements
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case MESSAGE_UPDATE_BUTTON:
-				
+
 				etInputSample.setVisibility(View.GONE);
 				etInputSampleTwo.setVisibility(View.GONE);
 				tvInputSample.setVisibility(View.VISIBLE);
 				tvInputSampleTwo.setVisibility(View.VISIBLE);
 				tvInputSample.setText(etInput);
-				tvInputSampleTwo.setText(etInputTwo);			
+				tvInputSampleTwo.setText(etInputTwo);
 				gifImageView.setBackground(getResources().getDrawable(
 						R.drawable.detection_anniu));
 				gifView.setBackground(drawable);
@@ -201,7 +201,7 @@ public class DetectionChannelActvity extends BaseActivity implements
 				btnStartDetection.setVisibility(View.INVISIBLE);
 				customView.setVisibility(View.GONE);
 				customViewTwo.setVisibility(View.GONE);
-				//etInputSample.setCursorVisible(false);
+				// etInputSample.setCursorVisible(false);
 				btnLine02.setSelected(false);
 				btnLine03.setSelected(true);
 				long time = System.currentTimeMillis();
@@ -221,10 +221,167 @@ public class DetectionChannelActvity extends BaseActivity implements
 				customView.setVisibility(View.VISIBLE);
 				customView.setData(getData(0));
 				customView.invalidate();
-				value();
+				// value();
 				if (size < 0) {
 					if (key == 2) {
-						/*if (cValues.get(0) > valC) {
+						
+						
+						for (int i = 0; i < _tValues.size(); i++) {
+							int length = _tValues.get(i).length;
+
+							/**
+							 * 根据曲线状态判断阴性阳性
+							 * 
+							 */
+
+							int count = 0;
+							int index1 = 0;
+							boolean line = false;
+							for (int n =3; n < length - 1; n++) {
+								if ((_tValues.get(i)[n + 1] - _tValues.get(i)[n]) < 0) {
+									count++;
+									if (count >5) {
+										for (int j = n; j < length - 1; j++) {
+											if (_tValues.get(i)[j + 1] - _tValues.get(i)[j] > 0
+													&& _tValues.get(i)[j - 5]
+															- _tValues.get(i)[j] > 120) {
+												System.out.println("第一个波谷值"+_tValue[i]+"---波谷开始值"
+														+_tValue[i-5]+"差值"+(_tValue[i-5]-_tValue[i])+"C坐标"+j);
+												index1 = j;
+												line = true;
+												break;
+											}
+										}
+										break;
+									}
+
+								} else {
+									count = 0;
+								}
+							}
+
+							/*int count2 = 0;
+							int index2 = 0;
+							boolean line2 = false;
+							for (int n = index1; n < length - 1; n++) {
+								if ((_tValues.get(i)[n + 1] - _tValues.get(i)[n]) < 0) {
+									count2++;
+									if (count2 > 5
+											&& (_tValues.get(i)[n - 5] - _tValues.get(i)[n] > 150)) {
+										for (int j = n; j < length - 1; j++) {
+											if (_tValues.get(i)[j + 1] - _tValues.get(i)[j] > 0) {
+												// System.out.println("第二个波谷值"+_tValues.get(i)[j
+												// +
+												// 1]+"---波谷开始值"+_tValue[i-5]+"差值"+(_tValue[i-5]-_tValue[i]));
+												
+												 * System.out.println("第er个波谷值"+_tValues.get(i)[j
+												 * ]); System.out.println("波谷2值坐标" + j+
+												 * "总长度"+length);
+												 
+												index2 = j;
+												line2 = true;
+												break;
+											}
+										}
+
+										break;
+									}
+
+								} else {
+									count2 = 0;
+								}
+							}*/
+							/*
+							 * System.out.println("波谷1值坐标" + index1 + "--波谷2值坐标" + index2 +
+							 * "数据的总长度" + length + "peak和T差值" + (int) (peak - _tValue[index2]));
+							 */
+							
+							if(line){
+								if(index1>20){
+									if (i == 0) {
+										tvResult.setText("无效");
+
+									} else {
+										tvResultTwo.setText("无效");
+									}
+								}else{
+									double max = _tValues.get(i)[index1+11];
+									double value=0;
+									for(int j=0;j<9;j++){
+										value= (value>(max-_tValues.get(i)[index1+11+j])? value:max-_tValues.get(i)[index1+11+j]);
+										}
+									System.out.println("-----------最大差值"+value);
+									if(value>300){
+										if (i == 0) {
+											tvResult.setText("阴性");
+
+										} else {
+											tvResultTwo.setText("阴性");
+										}
+									}else{
+										if (i == 0) {
+											tvResult.setText("阳性");
+
+										} else {
+											tvResultTwo.setText("阳性");
+										}
+									}
+								}
+							}else{
+								if (i == 0) {
+									tvResult.setText("无效");
+
+								} else {
+									tvResultTwo.setText("无效");
+								}
+							}
+/*
+							if (line) {
+								// index1改成20原始值30
+								if (index1 <= 20 && index1 >= 10 && line2 && index2 > 25
+										&& index2 < length - 5) {
+									if (i == 0) {
+										tvResult.setText("阴性");
+
+									} else {
+										tvResultTwo.setText("阴性");
+									}
+
+								} else if ((index1 <= 20 && !line2)
+										|| (index1 <= 20 && line2 && index2 <= 20)
+										|| (index1 <= 20 && line2 && index2 > length - 5)) {
+									if (i == 0) {
+										tvResult.setText("阳性");
+
+									} else {
+										tvResultTwo.setText("阳性");
+									}
+
+								} else if (index1 > 20) {
+									if (i == 0) {
+										tvResult.setText("无效");
+									} else {
+										tvResultTwo.setText("无效");
+
+									}
+
+								}
+							} else {
+								if (i == 0) {
+									tvResult.setText("无效");
+								} else {
+									tvResultTwo.setText("无效");
+
+								}
+							}*/
+							/**
+							 * 根据曲线状态判断阴性阳性
+							 */
+						}
+						
+						
+						
+					/*	if (cValues.get(0) > valC) {
 							if (valT >= tValues.get(0)) {
 								tvResult.setText("阳性");
 							} else if (tValues.get(0) > valTL) {
@@ -248,6 +405,7 @@ public class DetectionChannelActvity extends BaseActivity implements
 						} else {
 							tvResultTwo.setText("无效");
 						}*/
+
 					} else if (key == 3) {
 						if (cValues.get(0) > valC) {
 							if (cValues.get(0) - tValues.get(0) >= valueOne) {
@@ -276,30 +434,175 @@ public class DetectionChannelActvity extends BaseActivity implements
 					}
 				} else if (size > 0) {
 					if (key == 2) {
-						/*if (cValues.get(1) > valC) {
-							if (valT >= tValues.get(1)) {
-								tvResult.setText("阳性");
-							} else if (tValues.get(1) > valTL) {
-								tvResult.setText("阴性");
-							} else if (tValues.get(1) > valT
-									&& tValues.get(1) < valTL) {
-								tvResult.setText("可疑");
+						
+						for (int i = 0; i < _tValues.size(); i++) {
+							int length = _tValues.get(i).length;
+
+							/**
+							 * 根据曲线状态判断阴性阳性
+							 * 
+							 */
+
+							int count = 0;
+							int index1 = 0;
+							boolean line = false;
+							for (int n = 3; n < length - 1; n++) {
+								if ((_tValues.get(i)[n + 1] - _tValues.get(i)[n]) < 0) {
+									count++;
+									if (count >= 5) {
+										for (int j = n; j < length - 1; j++) {
+											if (_tValues.get(i)[j + 1] - _tValues.get(i)[j] > 0
+													&& _tValues.get(i)[j - 5]
+															- _tValues.get(i)[j] > 120) {
+												
+												  System.out.println("第一个波谷值"+_tValues.get(i)[j]
+												  ); System.out.println("波谷1值坐标" + j+
+												  "总长度"+length);
+												 
+												index1 = j;
+												line = true;
+												break;
+											}
+										}
+										break;
+									}
+
+								} else {
+									count = 0;
+								}
 							}
-						} else {
-							tvResult.setText("无效");
+
+							/*int count2 = 0;
+							int index2 = 0;
+							boolean line2 = false;
+							for (int n = index1; n < length - 1; n++) {
+								if ((_tValues.get(i)[n + 1] - _tValues.get(i)[n]) < 0) {
+									count2++;
+									if (count2 > 5
+											&& (_tValues.get(i)[n - 5] - _tValues.get(i)[n] > 200)) {
+										for (int j = n; j < length - 1; j++) {
+											if (_tValues.get(i)[j + 1] - _tValues.get(i)[j] > 0) {
+												 System.out.println("第二个波谷值"+_tValues.get(i)[j+1]+"---波谷开始值"+_tValue[i-5]+"差值"+(_tValue[i-5]-_tValue[i]));
+												
+												 * System.out.println("第er个波谷值"+_tValues.get(i)[j
+												 * ]); System.out.println("波谷2值坐标" + j+
+												 * "总长度"+length);
+												 
+												index2 = j;
+												line2 = true;
+												break;
+											}
+										}
+
+										break;
+									}
+
+								} else {
+									count2 = 0;
+								}
+							}*/
+							/*
+							 * System.out.println("波谷1值坐标" + index1 + "--波谷2值坐标" + index2 +
+							 * "数据的总长度" + length + "peak和T差值" + (int) (peak - _tValue[index2]));
+							 */
+							if(line){
+								if(index1>20){
+									if (i ==1) {
+										tvResult.setText("无效");
+
+									} else {
+										tvResultTwo.setText("无效");
+									}
+								}else{
+									double max = _tValues.get(i)[index1+11];
+									double value=0;
+									for(int j=0;j<9;j++){
+										value= (value>(max-_tValues.get(i)[index1+11+j])? value:max-_tValues.get(i)[index1+11+j]);
+										}
+									System.out.println("-----------最大差值"+value);
+									if(value>300){
+										if (i == 1) {
+											tvResult.setText("阴性");
+
+										} else {
+											tvResultTwo.setText("阴性");
+										}
+									}else{
+										if (i == 1) {
+											tvResult.setText("阳性");
+
+										} else {
+											tvResultTwo.setText("阳性");
+										}
+									}
+								}
+							}else{
+								if (i == 1) {
+									tvResult.setText("无效");
+
+								} else {
+									tvResultTwo.setText("无效");
+								}
+							}
+							/*if (line) {
+								// index1改成20原始值30
+								if (index1 <= 20 && index1 >= 10 && line2 && index2 > 25
+										&& index2 < length - 5) {
+									if (i == 1) {
+										tvResult.setText("阴性");
+
+									} else {
+										tvResultTwo.setText("阴性");
+									}
+
+								} else if ((index1 <= 20 && !line2)
+										|| (index1 <= 20 && line2 && index2 <= 20)
+										|| (index1 <= 20 && line2 && index2 > length - 5)) {
+									if (i == 1) {
+										tvResult.setText("阳性");
+
+									} else {
+										tvResultTwo.setText("阳性");
+									}
+
+								} else if (index1 > 20) {
+									if (i == 1) {
+										tvResult.setText("无效");
+									} else {
+										tvResultTwo.setText("无效");
+
+									}
+
+								}
+							} else {
+								if (i == 1) {
+									tvResult.setText("无效");
+								} else {
+									tvResultTwo.setText("无效");
+
+								}
+							}*/
+							/**
+							 * 根据曲线状态判断阴性阳性
+							 */
 						}
-						if (cValues.get(0) > valC) {
-							if (valT >= tValues.get(0)) {
-								tvResultTwo.setText("阳性");
-							} else if (tValues.get(0) > valTL) {
-								tvResultTwo.setText("阴性");
-							} else if (tValues.get(0) > valT
-									&& tValues.get(0) < valTL) {
-								tvResultTwo.setText("可疑");
-							}
-						} else {
-							tvResultTwo.setText("无效");
-						}*/
+						
+						
+						
+						/*
+						 * if (cValues.get(1) > valC) { if (valT >=
+						 * tValues.get(1)) { tvResult.setText("阳性"); } else if
+						 * (tValues.get(1) > valTL) { tvResult.setText("阴性"); }
+						 * else if (tValues.get(1) > valT && tValues.get(1) <
+						 * valTL) { tvResult.setText("可疑"); } } else {
+						 * tvResult.setText("无效"); } if (cValues.get(0) > valC)
+						 * { if (valT >= tValues.get(0)) {
+						 * tvResultTwo.setText("阳性"); } else if (tValues.get(0)
+						 * > valTL) { tvResultTwo.setText("阴性"); } else if
+						 * (tValues.get(0) > valT && tValues.get(0) < valTL) {
+						 * tvResultTwo.setText("可疑"); } } else {
+						 * tvResultTwo.setText("无效"); }
+						 */
 					} else if (key == 3) {
 						if (cValues.get(1) > valC) {
 							if (cValues.get(1) - tValues.get(1) >= valueOne) {
@@ -334,23 +637,23 @@ public class DetectionChannelActvity extends BaseActivity implements
 				densityTwo = tvDensityTwo.getText().toString();
 				samplename = etInputSample.getText().toString().trim();
 				samplenameTwo = etInputSampleTwo.getText().toString().trim();
-				
-				 proNumber=tvNumber.getText().toString().trim();
-				 proNumberTwo=tvNumberTwo.getText().toString().trim();
-				 //ph增加判断
+
+				proNumber = tvNumber.getText().toString().trim();
+				proNumberTwo = tvNumberTwo.getText().toString().trim();
+				// ph增加判断
 				if (!reList.isEmpty() && reList != null && !reLists.isEmpty()
 						&& reLists != null) {
-					if(size < 0){
-						logDao.add(number, samplename, projectName,
-								result, dateTime, density, datas[0]);
+					if (size < 0) {
+						logDao.add(number, samplename, projectName, result,
+								dateTime, density, datas[0]);
 						logDao.add(number + 1, samplenameTwo, projectName,
 								resultTwo, dateTime, densityTwo, datas[1]);
-					}else{
-						logDao.add(number, samplename, projectName,
-								result, dateTime, density, datas[1]);
+					} else if (size > 0) {
+						logDao.add(number, samplename, projectName, result,
+								dateTime, density, datas[1]);
 						logDao.add(number + 1, samplenameTwo, projectName,
 								resultTwo, dateTime, densityTwo, datas[0]);
-					}  
+					}
 				}
 				dao.update(projectName, number, samplename);
 				dao.update(projectName, number + 1, samplenameTwo);
@@ -499,9 +802,9 @@ public class DetectionChannelActvity extends BaseActivity implements
 		customViewTwo = (CustomView02) findViewById(R.id.customView_two);
 		tvResultTwo = (TextView) findViewById(R.id.tv_result_two);
 
-		//ph隐藏增加的textView
-		//tvInputSampleTwo.setVisibility(View.GONE);
-		
+		// ph隐藏增加的textView
+		// tvInputSampleTwo.setVisibility(View.GONE);
+
 		etInputSample.setFocusable(true);
 		etInputSampleTwo.setFocusable(true);
 		etInputSample.setText(sampleName);
@@ -566,11 +869,11 @@ public class DetectionChannelActvity extends BaseActivity implements
 			isRunning = false;
 			etInput = etInputSample.getText().toString().trim();
 			etInputTwo = etInputSampleTwo.getText().toString().trim();
-			if (!etInput.isEmpty()&&!etInputTwo.isEmpty()) {
+			if (!etInput.isEmpty() && !etInputTwo.isEmpty()) {
 				threadsenddata = ACTION_STATUS_CARD;
 				mthreadsenddata = ACTION_STATUS_CARD;
 				btnReturn.setEnabled(false);
-			} else if (etInput.isEmpty()||etInputTwo.isEmpty()) {
+			} else if (etInput.isEmpty() || etInputTwo.isEmpty()) {
 				Toast.makeText(DetectionChannelActvity.this, "请输入样品名称",
 						Toast.LENGTH_LONG).show();
 				btnReturn.setEnabled(true);
@@ -1175,15 +1478,15 @@ public class DetectionChannelActvity extends BaseActivity implements
 
 	List<Integer> reList;
 	List<Integer> reLists;
-	String[] datas=new String[2];
+	String[] datas = new String[2];
+
 	public List<Integer> getData(int index) {
 		reList = new ArrayList<Integer>();
 		reLists = new ArrayList<Integer>();
 		_tValues.clear();
-		//ph添加的
-		
+		// ph添加的
 		int m = 0;
-		//添加的
+		// 添加的
 		try {
 			Set set = dataValue.entrySet();
 			Iterator iter = set.iterator();
@@ -1196,7 +1499,7 @@ public class DetectionChannelActvity extends BaseActivity implements
 					for (int i = 0; i < value.length; i++) {
 						inBuffer[i] = value[i];
 					}
-					//截取有效值,获取两个坐标
+					// 截取有效值,获取两个坐标
 					Integer[] idx = CurveSmoothing.FindUsefulData(
 					// ph修改了value为inBuffer
 							DetectionChannelActvity.this, value);
@@ -1255,8 +1558,8 @@ public class DetectionChannelActvity extends BaseActivity implements
 						reList = Arrays.asList(tValue);
 						Object[] intData = reList.toArray();
 						//
-						//data = Arrays.toString(intData);
-						datas[m]=Arrays.toString(intData);
+						// data = Arrays.toString(intData);
+						datas[m] = Arrays.toString(intData);
 						m++;
 					}
 				} else {
@@ -1264,6 +1567,7 @@ public class DetectionChannelActvity extends BaseActivity implements
 					_tValues.add(null);
 
 				}
+				value(index);
 			}
 			Integer[] tValue = new Integer[_tValues.get(0).length];
 			Integer[] tvalue = new Integer[_tValues.get(1).length];
@@ -1308,7 +1612,7 @@ public class DetectionChannelActvity extends BaseActivity implements
 	List<Integer> cValues;
 	List<Integer> tValues;
 
-	private void value() {
+	private void value(int index0) {
 		cValues = new ArrayList<Integer>();
 		tValues = new ArrayList<Integer>();
 		for (int i = 0; i < _tValues.size(); i++) {
@@ -1317,110 +1621,6 @@ public class DetectionChannelActvity extends BaseActivity implements
 			int valueC = 0;
 			int valueT = 0;
 			int peak = 0;
-			
-			
-			/**
-			 * 根据曲线状态判断阴性阳性
-			 * 
-			 */
-
-			int count = 0;
-			int index1 = 0;
-			boolean line = false;
-			for (int n = 5; n < length - 1; n++) {
-				if ((_tValues.get(i)[n + 1] - _tValues.get(i)[n]) < 0) {
-					count++;
-					if (count >= 5) {
-						for (int j = n; j < length - 1; j++) {
-							if (_tValues.get(i)[j + 1] - _tValues.get(i)[j] > 0&&_tValues.get(i)[j-5]-_tValues.get(i)[j]>150) {
-								/*System.out.println("第一个波谷值"+_tValues.get(i)[j]);
-								System.out.println("波谷1值坐标" + j+ "总长度"+length);*/
-								index1 = j;
-								line = true;
-								break;
-							}
-						}
-						break;
-					}
-
-				} else {
-					count = 0;
-				}
-			}
-
-			int count2 = 0;
-			int index2 = 0;
-			boolean line2 = false;
-			for (int n = index1; n < length - 1; n++) {
-				if ((_tValues.get(i)[n + 1] - _tValues.get(i)[n]) < 0) {
-					count2++;
-					if (count2 >5) {
-						for (int j = n; j < length - 1; j++) {
-							if (_tValues.get(i)[j + 1] - _tValues.get(i)[j] > 0&&(_tValues.get(i)[n -5]-_tValues.get(i)[n]>150)) {
-								//System.out.println("第二个波谷值"+_tValues.get(i)[j + 1]+"---波谷开始值"+_tValue[i-5]+"差值"+(_tValue[i-5]-_tValue[i]));
-							/*	System.out.println("第er个波谷值"+_tValues.get(i)[j]);
-								System.out.println("波谷2值坐标" + j+ "总长度"+length);*/
-								index2 = j;
-								line2 = true;
-								break;
-							}
-						}
-
-						break;
-					}
-
-				} else {
-					count2 = 0;
-				}
-			}
-			/*System.out.println("波谷1值坐标" + index1 + "--波谷2值坐标" + index2
-					+ "数据的总长度" + length + "peak和T差值"
-					+ (int) (peak - _tValue[index2]));*/
-			
-			if (line) {
-				// index1改成20原始值30
-				if (index1 <= 20 && index1 >= 10 && line2 && index2 > 25
-						&& index2 < length - 5) {
-					if (i == 0) {
-						tvResult.setText("阴性");
-					} else {
-						tvResultTwo.setText("阴性");
-					}
-
-				} else if ((index1 <= 20 && !line2)
-						|| (index1 <= 20 && line2 && index2 <= 20)
-						|| (index1 <= 20 && line2 && index2 > length - 5)) {
-					if (i == 0) {
-						tvResult.setText("阳性");
-					} else {
-						tvResultTwo.setText("阳性");
-					}
-
-				} else if(index1>20){
-					if (i == 0) {
-						tvResult.setText("无效");
-					} else {
-						tvResultTwo.setText("无效");
-					}
-
-				}
-			} else {
-				if (i == 0) {
-					tvResult.setText("无效");
-				} else {
-					tvResultTwo.setText("无效");
-				}
-			}
-			/**
-			 * 根据曲线状态判断阴性阳性
-			 */
-
-			
-			
-			
-			
-			
-			
 			// C值波谷坐标 10-30
 			for (int j = 0; j < length; ++j) {
 				if (j == 0)
@@ -1638,92 +1838,108 @@ public class DetectionChannelActvity extends BaseActivity implements
 		String project = "编号  " + "样品名称      " + "浓度  " + "结果";
 		String space = " ";
 		if (len >= 6) {
-			etInput= etInput.substring(0, 6);
-			if(len2 >= 6){
+			etInput = etInput.substring(0, 6);
+			if (len2 >= 6) {
 				spaceNum = etInputTwo.substring(0, 6);
-			}else{
-				int newlen=6-len2;
-				switch(newlen){
+			} else {
+				int newlen = 6 - len2;
+				switch (newlen) {
 				case 1:
-					spaceNum = etInputTwo+space+space+space;
+					spaceNum = etInputTwo + space + space + space;
 					break;
 				case 2:
-					spaceNum =etInputTwo+space+space+space+space+space;
+					spaceNum = etInputTwo + space + space + space + space
+							+ space;
 					break;
 				case 3:
-					spaceNum = etInputTwo+space+space+space+space+space+space+space;
+					spaceNum = etInputTwo + space + space + space + space
+							+ space + space + space;
 					break;
 				case 4:
-					spaceNum = etInputTwo+space+space+space+space+space+space+space+space+space;
+					spaceNum = etInputTwo + space + space + space + space
+							+ space + space + space + space + space;
 					break;
 				case 5:
-					spaceNum =etInputTwo+space+space+space+space+space+space+space+space+space+space+space;
+					spaceNum = etInputTwo + space + space + space + space
+							+ space + space + space + space + space + space
+							+ space;
 					break;
-					default :
-					spaceNum=etInputTwo+space+space+space+space+space;
+				default:
+					spaceNum = etInputTwo + space + space + space + space
+							+ space;
 				}
 			}
-			
-			deviceCmd = "------------------------------"+line+f.format(number + 1) + space + space + spaceNum
-					+ space + space + space +densityTwo + space + space + space +resultTwo
-					+ line + f.format(number) + space + space + etInput
-					+ space + space +space + density + space + space + space +result + line+
-					"------------------------------"+line+ project + line + line + time + line
-					+ "设备：胶体金读卡仪" + line + line;
+
+			deviceCmd = "------------------------------" + line
+					+ f.format(number + 1) + space + space + spaceNum + space
+					+ space + space + densityTwo + space + space + space
+					+ resultTwo + line + f.format(number) + space + space
+					+ etInput + space + space + space + density + space + space
+					+ space + result + line + "------------------------------"
+					+ line + project + line + line + time + line + "设备：胶体金读卡仪"
+					+ line + line;
 		} else {
-			int newlen=6-len;
-			switch(newlen){
+			int newlen = 6 - len;
+			switch (newlen) {
 			case 1:
-				spaceNum = etInput+space+space;
+				spaceNum = etInput + space + space;
 				break;
 			case 2:
-				spaceNum = etInput+space+space+space+space;
+				spaceNum = etInput + space + space + space + space;
 				break;
 			case 3:
-				spaceNum = etInput+space+space+space+space+space+space;
+				spaceNum = etInput + space + space + space + space + space
+						+ space;
 				break;
 			case 4:
-				spaceNum = etInput+space+space+space+space+space+space+space+space;
+				spaceNum = etInput + space + space + space + space + space
+						+ space + space + space;
 				break;
 			case 5:
-				spaceNum = etInput+space+space+space+space+space+space+space+space+space+space;
+				spaceNum = etInput + space + space + space + space + space
+						+ space + space + space + space + space;
 				break;
-				default :
-				spaceNum=etInput+space+space+space+space+space;
+			default:
+				spaceNum = etInput + space + space + space + space + space;
 			}
-			if(len2 >= 6){
+			if (len2 >= 6) {
 				spaceNum2 = etInputTwo.substring(0, 6);
-			}else{
-				int newlen2=6-len2;
-				switch(newlen2){
+			} else {
+				int newlen2 = 6 - len2;
+				switch (newlen2) {
 				case 1:
-					spaceNum2 = etInputTwo+space+space;
+					spaceNum2 = etInputTwo + space + space;
 					break;
 				case 2:
-					spaceNum2 =etInputTwo+ space+space+space+space;
+					spaceNum2 = etInputTwo + space + space + space + space;
 					break;
 				case 3:
-					spaceNum2 = etInputTwo+space+space+space+space+space+space;
+					spaceNum2 = etInputTwo + space + space + space + space
+							+ space + space;
 					break;
 				case 4:
-					spaceNum2 = etInputTwo+space+space+space+space+space+space+space+space;
+					spaceNum2 = etInputTwo + space + space + space + space
+							+ space + space + space + space;
 					break;
 				case 5:
-					spaceNum2 =etInputTwo+ space+space+space+space+space+space+space+space+space+space;
+					spaceNum2 = etInputTwo + space + space + space + space
+							+ space + space + space + space + space + space;
 					break;
-					default :
-					spaceNum2=etInputTwo+space+space+space+space+space;
+				default:
+					spaceNum2 = etInputTwo + space + space + space + space
+							+ space;
 				}
 			}
-				
-			deviceCmd = "------------------------------"+line+f.format(number + 1) + space + space + spaceNum2
-					+ space + space + space + densityTwo
-					+ space + space + space + resultTwo + line
-					+ f.format(number) + space + space + spaceNum + space + space + space+ density + space + space
-					+ space + result + line + "------------------------------"+line+project + line + line
-					+ time + line + "设备：胶体金读卡仪" + line
-					+ line;
-		
+
+			deviceCmd = "------------------------------" + line
+					+ f.format(number + 1) + space + space + spaceNum2 + space
+					+ space + space + densityTwo + space + space + space
+					+ resultTwo + line + f.format(number) + space + space
+					+ spaceNum + space + space + space + density + space
+					+ space + space + result + line
+					+ "------------------------------" + line + project + line
+					+ line + time + line + "设备：胶体金读卡仪" + line + line;
+
 		}
 		sendPrintingData(CMD_RESET);
 		sendPrintingData(CMD_LINEDISTANCE);
@@ -1741,7 +1957,7 @@ public class DetectionChannelActvity extends BaseActivity implements
 		sendPrintingData(CMD_SETDOUBLESIZE);
 		sendPrintingData(CMD_CENTER);
 		sendPrintingData(CMD_SETGBK);
-		String headCmd =  projectName+line+"检测报告" + line + line;
+		String headCmd = projectName + line + "检测报告" + line + line;
 
 		byte[] bytes = headCmd.getBytes("gbk");
 		sendPrintingData(bytes);
@@ -1859,32 +2075,25 @@ public class DetectionChannelActvity extends BaseActivity implements
 			etInputSampleTwo.setText(samplenameTwo);
 		}
 	}
-	
-/*	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
-		if(!isRunning){
-			if(keyCode==KeyEvent.KEYCODE_BACK){
-				back();
-				return true;
-			}else{
-				//return super.onKeyDown(keyCode, event);
-				return true;
-			}
-		}else{
-			return super.onKeyDown(keyCode, event);
-		}
 
-	}*/
-	
+	/*
+	 * @Override public boolean onKeyDown(int keyCode, KeyEvent event) { // TODO
+	 * Auto-generated method stub if(!isRunning){
+	 * if(keyCode==KeyEvent.KEYCODE_BACK){ back(); return true; }else{ //return
+	 * super.onKeyDown(keyCode, event); return true; } }else{ return
+	 * super.onKeyDown(keyCode, event); }
+	 * 
+	 * }
+	 */
+
 	@Override
 	public void onBackPressed() {
-		if(isRunning){
+		if (isRunning) {
 			System.out.println("测试返回键--------------");
-			//super.onBackPressed();
-		}else{
+			// super.onBackPressed();
+		} else {
 			System.out.println("测试返回键");
-			//super.onBackPressed();
+			// super.onBackPressed();
 			back();
 		}
 	}

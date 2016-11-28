@@ -150,7 +150,7 @@ public class QueryLogActivity extends BaseActivity implements
 		tvPage.setText( (index + 1)+"/"+page);
 		lvLog.setAdapter(adapter);
 		lvLog.setChoiceMode(lvLog.CHOICE_MODE_SINGLE);
-        //listener();
+        listener();
 		// 添加2个Button的监听事件。
 		
 		isRunning = true;

@@ -878,7 +878,7 @@ public class DetectionChannelOneActvity extends BaseActivity implements
 				reList = Arrays.asList(tValue);
 				Object[] intData = reList.toArray();
 				//ph截取后面五个点
-				reList=reList.subList(0, reList.size()-5);
+				//reList=reList.subList(0, reList.size()-5);
 				data = Arrays.toString(intData);
 				// Value();
 
@@ -910,34 +910,25 @@ public class DetectionChannelOneActvity extends BaseActivity implements
 		int CIndex = 0, TIndex = 0;
 		int valueC = 0;
 		int valueT = 0;
-		int peak = 0;
-		
-		
-		
-		
+		int peak = 0;	
 		/**
 		 * 根据曲线状态判断阴性阳性
 		 * 
-		 */
-		 
+		 */		 
 		int count = 0;
 		int index1 = 0;
 		boolean line=false;
-		for (int i = 5; i < _tValue.length - 1; i++) {
+		for (int i = 3; i < _tValue.length - 1; i++) {
 			if ((_tValue[i + 1] - _tValue[i]) < 0) {
 				count++;
-				if(count>=5){
+				if(count>5){
 					for(int j =i;j<_tValue.length - 1;j++){
-						if(_tValue[j + 1] - _tValue[j] > 0&&_tValue[j-5]-_tValue[j]>150){
+						if(_tValue[j + 1] - _tValue[j] > 0&&_tValue[j-5]-_tValue[j]>120){
 							System.out.println("第一个波谷值"+_tValue[i]+"---波谷开始值"
 						+_tValue[i-5]+"差值"+(_tValue[i-5]-_tValue[i])+"C坐标"+j);
-							
-							System.out.println("波谷1值坐标" + j );
-									
-							
 							index1=j;
 							line=true;
-							break;
+							break; 
 						}
 					}
 					break;
@@ -947,15 +938,33 @@ public class DetectionChannelOneActvity extends BaseActivity implements
 				count=0;
 			}
 		}
-		
-		int count2 = 0;
+		if(line){
+			if(index1>20){
+				tvResult.setText("无效");
+			}else{
+				double max =_tValue[index1+11];
+				double value=0;
+				for(int i=0;i<9;i++){
+					value= (value>(max-_tValue[index1+11+i])? value:max-_tValue[index1+11+i]);
+					}
+				System.out.println("-----------最大差值"+value);
+				if(value>300){
+					tvResult.setText("阴性");
+				}else{
+					tvResult.setText("阳性");
+				}
+			}
+		}else{
+			tvResult.setText("无效");
+		}
+	/*	int count2 = 0;
 		int index2 = 0;
 		boolean line2=false;
 		for (int i = index1; i < _tValue.length - 1; i++) {
 			if ((_tValue[i + 1] - _tValue[i]) < 0) {
 				count2++;
 				//&&_tValue[i-5]-_tValue[i]>100
-				if (count2 >= 5&&_tValue[i-5]-_tValue[i]>150) {
+				if (count2 > 3&&_tValue[i-5]-_tValue[i]>120) {
 				
 					for(int j =i;j<_tValue.length - 1;j++){
 						if(_tValue[j + 1] - _tValue[j] > 0){
@@ -974,28 +983,24 @@ public class DetectionChannelOneActvity extends BaseActivity implements
 			}else{
 				count2=0;
 			}
-		}		
-		if(line){
+		}*/		
+		/*if(line){
 			//index1改成20原始值30
 			if(index1<=20&&index1>=10&&line2&&index2>25&&index2<_tValue.length-5){
 				tvResult.setText("阴性");
-			}else if((index1<=20&&!line2)||(index1<=20&&line2&&index2<=20)||(index1<=20&&line2&&index2>_tValue.length-5)){
+			}else if((index1<=20&&!line2)||(index1<=20&&line2&&index2<=20)||(index1<=20&&line2&&index2>=_tValue.length-5)){
 				tvResult.setText("阳性");
 			}else if(index1>20){
 				tvResult.setText("无效"); 
+			}else{
+				tvResult.setText("无效");
 			}
 		}else{
 			tvResult.setText("无效");
-		}
+		}*/
 		/**
 		 *  根据曲线状态判断阴性阳性
-		 */
-		
-		
-		
-		
-		
-		
+		 */	
 		// C值波谷坐标 10-30
 		for (int j = 0; j < length; ++j) {
 			if (j == 0)
